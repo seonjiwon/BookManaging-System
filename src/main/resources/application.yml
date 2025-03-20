@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/sdb
+    url: jdbc:mysql://localhost:3306/book_manage
     username: seonjiwon
     password: jiwon0126
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -10,3 +10,4 @@ spring:
     properties:
       hibernate:
         format_sql: true
+    show-sql: true

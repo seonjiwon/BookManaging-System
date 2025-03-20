@@ -19,10 +19,9 @@ class MemberRepositoryTest {
     @Transactional
     @DisplayName("저장 테스트")
     public void testMember() {
-        Member member = new Member("user1");
-        Long savedId = memberRepository.save(member);
+        Member member = new Member("user1", "temp@temp.com");
+        Member savedMember = memberRepository.save(member);
 
-        Member findMember = memberRepository.find(savedId);
-        assertThat(findMember).isEqualTo(member);
+        assertThat(savedMember).isEqualTo(member);
     }
 }

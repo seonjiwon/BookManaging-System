@@ -12,33 +12,37 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.annotation.LastModifiedBy;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Member {
+public class Book {
 
-    @Id @GeneratedValue
-    @Column(name = "member_id")
-    private Long id;
+    @Id
+    @GeneratedValue
+    @Column(name = "book_id")
+    private int id;
 
-    private String username;
+    private String title;
+    private String author;
+    private int published_year;
+    private String isbn;
+    private boolean available;
 
-    private String email;
-    private int borrowedBooksCount;
-
-    @OneToMany(mappedBy = "member", orphanRemoval = true)
+    @OneToMany(mappedBy = "book", orphanRemoval = true)
     private List<Loan> loans = new ArrayList<>();
 
     @CreatedDate
     private LocalDateTime createdAt;
-    @LastModifiedDate
+    @LastModifiedBy
     private LocalDateTime updatedAt;
 
-    public Member(String username, String email) {
-        this.username = username;
-        this.email = email;
-        this.borrowedBooksCount = 0;
+    public Book(String title, String author, int published_year, String isbn) {
+        this.title = title;
+        this.author = author;
+        this.published_year = published_year;
+        this.isbn = isbn;
+        this.available = true;
     }
 }
